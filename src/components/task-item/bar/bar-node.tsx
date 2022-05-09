@@ -2,6 +2,7 @@ import React from "react";
 import { TaskItemProps } from "../task-item";
 import styles from "./bar-node.module.css";
 import { paddingTop } from '../../gantt/gantt'
+import dayjs from "dayjs";
 
 export const BarNode: React.FC<TaskItemProps> = ({
   task,
@@ -10,7 +11,6 @@ export const BarNode: React.FC<TaskItemProps> = ({
   onEventStart,
   isSelected,
 }) => {
-  console.log(task, 'task');
   // const transform = `rotate(45 ${task.x1 + task.height * 0.356}
   //   ${task.y + task.height * 0.85})`;
   const getBarColor = () => {
@@ -20,14 +20,20 @@ export const BarNode: React.FC<TaskItemProps> = ({
   };
 
   const linex = task.x1 + task.height / 2;
-
+  const fill = getBarColor();
   return (
     <g tabIndex={0} className={styles.milestoneWrapper}>
+      <g>
+        <text y={0} x={task.x1} fill={fill}>{task.name}</text>
+        <text y={20} x={task.x1} fill={fill} style={{
+          transform: `translateX(-17px)`
+        }}>{dayjs(task.end).format('YYYY/MM/DD')}</text>
+      </g>
       <rect
-        fill={getBarColor()}
+        fill={fill}
         x={task.x1}
         width={task.height}
-        y={0}
+        y={25}
         height={task.height}
         rx={task.barCornerRadius}
         ry={task.barCornerRadius}

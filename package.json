@@ -74,5 +74,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "dayjs": "^1.11.2"
+  }
 }
