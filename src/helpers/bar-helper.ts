@@ -205,8 +205,8 @@ const convertToBar = (
   const y = taskYCoordinate(index, rowHeight, taskHeight);
   const hideChildren = task.type === "project" ? task.hideChildren : undefined;
 
-  if(typeInternal === 'node'){
-    barCornerRadius = taskHeight/2;
+  if (typeInternal === 'node') {
+    barCornerRadius = taskHeight / 2;
   }
 
   const styles = {
@@ -294,15 +294,20 @@ const taskXCoordinate = (
       dates[0].getTimezoneOffset()) /
     dateDelta
   );
-  const x = Math.round(
-    (index +
+  let num = 0;
+
+  try {
+    num = (index +
       (xDate.getTime() -
         dates[index].getTime() -
         xDate.getTimezoneOffset() * 60 * 1000 +
         dates[index].getTimezoneOffset() * 60 * 1000) /
       dateDelta) *
-    columnWidth
-  );
+      columnWidth;
+  } catch (err) {
+    console.log(err)
+  }
+  const x = Math.round(num);
   return x;
 };
 const taskXCoordinateRTL = (

@@ -213,6 +213,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
 
   useEffect(() => {
     const { changedTask, action } = ganttEvent;
+    console.log(ganttEvent,'ganttEvent');
     if (changedTask) {
       if (action === "delete") {
         setGanttEvent({ action: "" });
