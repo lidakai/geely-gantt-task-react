@@ -66,6 +66,11 @@ export interface EventOption {
    * Invokes on expander on task list
    */
   onExpanderClick?: (task: Task) => void;
+
+  /**
+   * 节点click事件
+  */
+   handleNodeChange?: (task: Task) => void;
 }
 
 export interface DisplayOption {

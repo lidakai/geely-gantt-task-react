@@ -32,6 +32,7 @@ export type TaskGanttContentProps = {
   setGanttEvent: (value: GanttEvent) => void;
   setFailedTask: (value: BarTask | null) => void;
   setSelectedTask: (taskId: string) => void;
+  handleNodeChange?: (task: BarTask) => void;
 } & EventOption;
 
 export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
@@ -302,6 +303,7 @@ export const TaskGanttContentNode: React.FC<TaskGanttContentProps> = ({
   barNodes,
   selectedTask,
   taskHeight,
+  handleNodeChange,
   arrowIndent,
   fontFamily,
   fontSize,
@@ -322,7 +324,8 @@ export const TaskGanttContentNode: React.FC<TaskGanttContentProps> = ({
               isProgressChangeable={false}
               isDateChangeable={false}
               isDelete={!task.isDisabled}
-              onEventStart={()=>{}}
+              onEventStart = {()=>{}}
+              handleNodeChange={handleNodeChange}
               key={task.id}
               isSelected={!!selectedTask && task.id === selectedTask.id}
               rtl={rtl}

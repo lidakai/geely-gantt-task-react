@@ -62,6 +62,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   TaskListTable = TaskListTableDefault,
   onDateChange,
   onProgressChange,
+  handleNodeChange,
   onDoubleClick,
   onDelete,
   onSelect,
@@ -213,7 +214,6 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
 
   useEffect(() => {
     const { changedTask, action } = ganttEvent;
-    console.log(ganttEvent,'ganttEvent');
     if (changedTask) {
       if (action === "delete") {
         setGanttEvent({ action: "" });
@@ -434,6 +434,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     setGanttEvent,
     setFailedTask,
     setSelectedTask: handleSelectedTask,
+    handleNodeChange,
     onDateChange,
     onProgressChange,
     onDoubleClick,

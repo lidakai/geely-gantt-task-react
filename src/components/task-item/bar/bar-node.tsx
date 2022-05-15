@@ -9,6 +9,7 @@ export const BarNode: React.FC<TaskItemProps> = ({
   boxHeight = 0,
   isDateChangeable,
   onEventStart,
+  handleNodeChange,
   isSelected,
 }) => {
   // const transform = `rotate(45 ${task.x1 + task.height * 0.356}
@@ -31,9 +32,13 @@ export const BarNode: React.FC<TaskItemProps> = ({
       </g>
       <rect
         fill={fill}
+        style={{ cursor: 'pointer' }}
         x={task.x1}
         width={task.height}
         y={25}
+        onClick={(e) => {
+          handleNodeChange?.(task, e);
+        }}
         height={task.height}
         rx={task.barCornerRadius}
         ry={task.barCornerRadius}

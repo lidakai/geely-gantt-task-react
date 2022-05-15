@@ -18,6 +18,10 @@ export type TaskItemProps = {
   isDelete: boolean;
   isSelected: boolean;
   rtl: boolean;
+  handleNodeChange?:(
+    selectedTask: BarTask,
+    event?: React.MouseEvent | React.KeyboardEvent
+  ) => any;
   onEventStart: (
     action: GanttContentMoveAction,
     selectedTask: BarTask,
