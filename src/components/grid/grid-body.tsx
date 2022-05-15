@@ -8,6 +8,7 @@ export type GridBodyProps = {
   dates: Date[];
   svgWidth: number;
   rowHeight: number;
+  boxHeight?:number;
   columnWidth: number;
   todayColor: string;
   rtl: boolean;

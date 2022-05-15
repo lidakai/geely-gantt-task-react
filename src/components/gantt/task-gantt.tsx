@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { GridProps, Grid } from "../grid/grid";
 import { CalendarProps, Calendar } from "../calendar/calendar";
-import { TaskGanttContentProps, TaskGanttContent ,TaskGanttContentNode} from "./task-gantt-content";
+import { TaskGanttContentProps, TaskGanttContent, TaskGanttContentNode } from "./task-gantt-content";
 import styles from "./gantt.module.css";
-import {paddingTop} from './gantt';
+import { paddingTop } from './gantt';
 
 export type TaskGanttProps = {
   gridProps: GridProps;
@@ -46,44 +46,43 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        // width={gridProps.svgWidth}
-        // height={barProps.rowHeight * barProps.tasks.length + calendarProps.headerHeight}
-        width={1}
+        width={gridProps.svgWidth}
         height={1}
         fontFamily={barProps.fontFamily}
-        style={{ position: 'absolute',overflow:'overlay' }}
+        style={{ overflow: 'overlay', position: 'absolute' }}
       >
-        <TaskGanttContentNode   {...newBarProps}  boxHeight={barProps.rowHeight * barProps.tasks.length + calendarProps.headerHeight} />
+        <TaskGanttContentNode   {...newBarProps} boxHeight={barProps.rowHeight * barProps.tasks.length + calendarProps.headerHeight} />
       </svg>
-      <div style={{paddingTop:paddingTop}}>
-              <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={gridProps.svgWidth}
-        height={calendarProps.headerHeight}
-        fontFamily={barProps.fontFamily}
-      >
-        <Calendar {...calendarProps} />
-      </svg>
-      <div
-        ref={horizontalContainerRef}
-        className={styles.horizontalContainer}
-        style={
-          ganttHeight
-            ? { height: ganttHeight, width: gridProps.svgWidth }
-            : { width: gridProps.svgWidth }
-        }
-      >
+      <div style={{ paddingTop: paddingTop }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={gridProps.svgWidth}
-          height={barProps.rowHeight * barProps.tasks.length}
+          height={calendarProps.headerHeight}
           fontFamily={barProps.fontFamily}
-          ref={ganttSVGRef}
         >
-          <Grid {...gridProps} />
-          <TaskGanttContent {...newBarProps} />
+          <Calendar {...calendarProps} />
         </svg>
-      </div>
+        <div
+          ref={horizontalContainerRef}
+          className={styles.horizontalContainer}
+          style={
+            ganttHeight
+              ? { height: ganttHeight, width: gridProps.svgWidth }
+              : { width: gridProps.svgWidth }
+          }
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={gridProps.svgWidth}
+            height={barProps.rowHeight * barProps.tasks.length}
+            fontFamily={barProps.fontFamily}
+            style={{ overflow: 'overlay' }}
+            ref={ganttSVGRef}
+          >
+            <Grid  {...gridProps} boxHeight={barProps.rowHeight * barProps.tasks.length + calendarProps.headerHeight} />
+            <TaskGanttContent {...newBarProps} />
+          </svg>
+        </div>
 
       </div>
 

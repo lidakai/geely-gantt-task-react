@@ -24,7 +24,7 @@ import styles from "./gantt.module.css";
 import { HorizontalScroll } from "../other/horizontal-scroll";
 import { removeHiddenTasks, sortTasks } from "../../helpers/other-helper";
 
-export const paddingTop = 40;
+export const paddingTop = 42;
 
 export const Gantt: React.FunctionComponent<GanttProps> = ({
   tasks,
@@ -120,7 +120,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     }
     setDateSetup({ dates: newDates, viewMode });
     setBarNodes(convertToBarTasks(
-      nodes,
+      nodes.filter(d=>new Date(d.end).getTime() >= new Date(startDate).getTime() && new Date(d.end).getTime() <= new Date(endDate).getTime()),
       newDates,
       columnWidth,
       rowHeight,
@@ -467,7 +467,10 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
         tabIndex={0}
         ref={wrapperRef}
       >
-        {listCellWidth && <div style={{ paddingTop: paddingTop }}>
+        {listCellWidth && <div style={{
+          display: 'flex',
+          alignItems: 'flex-end'
+        }}>
           <TaskList {...tableProps} />
         </div>}
         <TaskGantt
