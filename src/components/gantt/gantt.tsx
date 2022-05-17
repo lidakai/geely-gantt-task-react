@@ -63,6 +63,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   onDateChange,
   onProgressChange,
   handleNodeChange,
+  handleTaskChange,
   onDoubleClick,
   onDelete,
   onSelect,
@@ -120,7 +121,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     }
     setDateSetup({ dates: newDates, viewMode });
     setBarNodes(convertToBarTasks(
-      nodes.filter(d=>new Date(d.end).getTime() >= new Date(startDate).getTime() && new Date(d.end).getTime() <= new Date(endDate).getTime()),
+      nodes.filter(d => new Date(d.end).getTime() >= new Date(startDate).getTime() && new Date(d.end).getTime() <= new Date(endDate).getTime()),
       newDates,
       columnWidth,
       rowHeight,
@@ -435,6 +436,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     setFailedTask,
     setSelectedTask: handleSelectedTask,
     handleNodeChange,
+    handleTaskChange,
     onDateChange,
     onProgressChange,
     onDoubleClick,

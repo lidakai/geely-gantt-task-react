@@ -19,6 +19,8 @@ export const Bar: React.FC<TaskItemProps> = ({
     task.y,
     task.height
   );
+
+
   const handleHeight = task.height - 2;
   return (
     <g className={styles.barWrapper} tabIndex={0}>

@@ -71,6 +71,11 @@ export interface EventOption {
    * 节点click事件
   */
    handleNodeChange?: (task: Task) => void;
+
+  /**
+   * taskclick事件
+  */
+   handleTaskChange?:(task: Task) => void;
 }
 
 export interface DisplayOption {

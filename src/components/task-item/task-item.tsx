@@ -18,7 +18,11 @@ export type TaskItemProps = {
   isDelete: boolean;
   isSelected: boolean;
   rtl: boolean;
-  handleNodeChange?:(
+  handleTaskChange?: (
+    selectedTask: BarTask,
+    event?: React.MouseEvent | React.KeyboardEvent
+  ) => any;
+  handleNodeChange?: (
     selectedTask: BarTask,
     event?: React.MouseEvent | React.KeyboardEvent
   ) => any;
@@ -38,6 +42,7 @@ export const TaskItem: React.FC<TaskItemProps> = props => {
     isSelected,
     rtl,
     onEventStart,
+    handleTaskChange
   } = {
     ...props,
   };
@@ -111,6 +116,9 @@ export const TaskItem: React.FC<TaskItemProps> = props => {
       }}
       onFocus={() => {
         onEventStart("select", task);
+      }}
+      onClick={e => {
+        handleTaskChange?.(task,e)
       }}
     >
       {taskItem}
