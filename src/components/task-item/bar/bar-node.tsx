@@ -51,12 +51,6 @@ export const BarNode: React.FC<TaskItemProps> = ({
           isDateChangeable && onEventStart("move", task, e);
         }}
       />
-
-      {/* <text
-
-        >
-          {task.name}
-        </text> */}
     </g>
   );
 };

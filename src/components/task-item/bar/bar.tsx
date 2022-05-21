@@ -20,14 +20,14 @@ export const Bar: React.FC<TaskItemProps> = ({
     task.height
   );
 
-
+  const {x1=0,y=0,x2=0} = task;
   const handleHeight = task.height - 2;
   return (
     <g className={styles.barWrapper} tabIndex={0}>
       <BarDisplay
-        x={task.x1}
-        y={task.y}
-        width={task.x2 - task.x1}
+        x={x1}
+        y={y}
+        width={x2 - x1}
         height={task.height}
         progressX={task.progressX}
         progressWidth={task.progressWidth}

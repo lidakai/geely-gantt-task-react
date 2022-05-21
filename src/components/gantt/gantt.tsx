@@ -78,7 +78,6 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   const [currentViewDate, setCurrentViewDate] = useState<Date | undefined>(
     undefined
   );
-
   const [taskListWidth, setTaskListWidth] = useState(0);
   const [svgContainerWidth, setSvgContainerWidth] = useState(0);
   const [svgContainerHeight, setSvgContainerHeight] = useState(ganttHeight);
@@ -163,6 +162,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
       )
     );
   }, [
+    nodes,
     tasks,
     viewMode,
     rowHeight,
